@@ -15,7 +15,7 @@ This is a **Laravel-based Account Management System** with the following feature
 
 ### **1️⃣ Clone the Repository**
 ```bash
-https://github.com/sreekuttan-rugr/account-management.git
+git clone https://github.com/your-repo/account-management.git
 cd account-management
 ```
 
@@ -78,10 +78,23 @@ POST /api/register
   "password_confirmation": "password123"
 }
 ```
+**Response:**
+```json
+{
+  "message": "User registered successfully"
+}
+```
 
 ### **Login & Get Token**
 ```http
 POST /api/login
+```
+**Request Body:**
+```json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
 ```
 **Response:**
 ```json
@@ -91,11 +104,15 @@ POST /api/login
 }
 ```
 
-💡 **Use this token in the Authorization header for all protected routes.**
-
 ### **Logout**
 ```http
 POST /api/logout
+```
+**Response:**
+```json
+{
+  "message": "Logged out successfully"
+}
 ```
 
 ---
@@ -111,16 +128,73 @@ POST /api/logout
 | **DELETE** | `/api/accounts/{account_number}` | Soft delete (deactivate) account |
 | **PATCH** | `/api/accounts/{account_number}/restore` | Restore a soft-deleted account |
 
+#### **Create Account Example**
+**Request:**
+```json
+{
+    "account_name": "John's Business",
+    "account_type": "Business",
+    "currency": "USD",
+    "initial_balance": 500
+}
+```
+**Response:**
+```json
+{
+    "message": "Account created successfully",
+    "account": {
+        "account_name": "John's Business",
+        "account_number": "492174385610",
+        "account_type": "Business",
+        "currency": "USD",
+        "balance": 500
+    }
+}
+```
+
 ### **Transactions**
 | Method | Endpoint | Description |
 |--------|------------------------|------------------|
 | **POST** | `/api/transactions` | Log a credit or debit transaction |
 | **GET** | `/api/transactions?account_number=X` | Get transactions for an account |
 
+#### **Transaction Example**
+**Request:**
+```json
+{
+    "account_number": "492174385610",
+    "type": "Credit",
+    "amount": 100.50,
+    "description": "Salary Deposit"
+}
+```
+**Response:**
+```json
+{
+    "message": "Transaction recorded successfully"
+}
+```
+
 ### **Fund Transfers**
 | Method | Endpoint | Description |
 |--------|------------------------------|------------------|
 | **POST** | `/api/transactions/transfer` | Transfer funds between accounts |
+
+#### **Transfer Example**
+**Request:**
+```json
+{
+    "from_account_number": "123456789012",
+    "to_account_number": "987654321098",
+    "amount": 50
+}
+```
+**Response:**
+```json
+{
+    "message": "Transfer successful"
+}
+```
 
 ### **PDF Account Statement**
 | Method | Endpoint | Description |
