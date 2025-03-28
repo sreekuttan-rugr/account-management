@@ -36,7 +36,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=account_management
 DB_USERNAME=root
-DB_PASSWORD=yourpassword
+DB_PASSWORD=
 ```
 
 ### **4️⃣ Generate Application Key**
