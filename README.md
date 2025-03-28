@@ -15,7 +15,7 @@ This is a **Laravel-based Account Management System** with the following feature
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/your-repo/account-management.git
+https://github.com/sreekuttan-rugr/account-management.git
 cd account-management
 ```
 
